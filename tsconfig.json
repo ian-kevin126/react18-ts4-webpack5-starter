@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "typeRoots": ["./typings/*.d.ts", "node_modules/@types"],
+    "jsx": "react-jsx" // react18这里改成react-jsx，就不需要在tsx文件中手动引入React了
+  },
+  "include": ["./src", "./typings/*.d.ts"]
+}

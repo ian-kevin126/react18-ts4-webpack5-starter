@@ -1,0 +1,45 @@
+{
+  "name": "fe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:dev": "cross-env NODE_ENV=development BASE_ENV=development webpack serve -c build/webpack.dev.ts",
+    "dev:test": "cross-env NODE_ENV=development BASE_ENV=test webpack serve -c build/webpack.dev.ts",
+    "dev:pre": "cross-env NODE_ENV=development BASE_ENV=pre webpack serve -c build/webpack.dev.ts",
+    "dev:prod": "cross-env NODE_ENV=development BASE_ENV=production webpack serve -c build/webpack.dev.ts",
+    "build:dev": "cross-env NODE_ENV=production BASE_ENV=development webpack -c build/webpack.prod.ts",
+    "build:test": "cross-env NODE_ENV=production BASE_ENV=test webpack -c build/webpack.prod.ts",
+    "build:pre": "cross-env NODE_ENV=production BASE_ENV=pre webpack -c build/webpack.prod.ts",
+    "build:prod": "cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.prod.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/node": "^18.11.18",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "babel-loader": "^9.1.2",
+    "core-js": "^3.27.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.3",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0"
+  }
+}
