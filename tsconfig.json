@@ -6,8 +6,13 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "typeRoots": ["./typings/*.d.ts", "node_modules/@types"],
     "jsx": "react-jsx" // react18这里改成react-jsx，就不需要在tsx文件中手动引入React了
   },
-  "include": ["./src", "./typings/*.d.ts"]
+  "include": ["./src", "./typings/*.d.ts"],
+  "exclude": ["node_modules", "dist"]
 }

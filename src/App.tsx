@@ -1,4 +1,4 @@
-import './App.css'
+import '@/App.css'
 
 function App() {
   return <h2>webpack5-react-ts</h2>
