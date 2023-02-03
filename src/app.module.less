@@ -1,6 +1,13 @@
+@color: red;
+
 .app {
     .box {
-        color: red;
+        color: @color;
         background-color: lightblue;
+
+        &:before{
+            @arr: 'hello', 'world';
+            content: `@{arr}.join(' ').toUpperCase()`;
+          }
     }
 }

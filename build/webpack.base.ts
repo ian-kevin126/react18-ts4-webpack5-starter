@@ -12,6 +12,7 @@ const envConfig = dotenv.config({
   path: path.resolve(__dirname, "../env/.env." + process.env.BASE_ENV),
 });
 
+const tsxRegex = /\.(ts|tsx)$/;
 const cssRegex = /\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const lessRegex = /\.less$/;
@@ -42,7 +43,7 @@ const baseConfig: Configuration = {
   module: {
     rules: [
       {
-        test: /.(ts|tsx)$/, // 匹配.ts, tsx文件
+        test: tsxRegex, // 匹配.ts, tsx文件
         use: {
           loader: "babel-loader",
           options: {
@@ -76,7 +77,15 @@ const baseConfig: Configuration = {
         test: lessRegex,
         use: [
           ...styleLoadersArray,
-          "less-loader",
+          {
+            loader: "less-loader",
+            options: {
+              lessOptions: {
+                // 如果要在less中写类型js的语法，需要加这一个配置
+                javascriptEnabled: true
+              },
+            },
+          },
         ],
       },
       {

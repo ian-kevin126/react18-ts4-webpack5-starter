@@ -1,6 +1,12 @@
+$blue: #1875e7;
+$side: left;
+
 .app {
   .box {
-    color: red;
+    color: $blue;
     background-color: lightblue;
+    border: 1px solid grey;
+    margin-#{$side}: 20px;
+    padding: (20px/2);
   }
 }
