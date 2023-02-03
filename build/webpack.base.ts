@@ -28,6 +28,7 @@ const styleLoadersArray = [
       },
     },
   },
+  'postcss-loader'
 ];
 
 const baseConfig: Configuration = {
