@@ -59,6 +59,9 @@ const baseConfig: Configuration = {
             loader: "less-loader",
             options: {
               lessOptions: {
+                importLoaders: 2,
+                // 可以加入modules: true，这样就不需要在less文件名加module了
+                modules: true,
                 // 如果要在less中写类型js的语法，需要加这一个配置
                 javascriptEnabled: true
               },

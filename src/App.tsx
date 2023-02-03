@@ -1,5 +1,5 @@
 import '@/App.css'
-import styles from './app.module.less'
+import styles from './app.less'
 // import styles from './app.module.scss'
 // import styles from './app.module.styl'
 
