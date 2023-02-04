@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "es2016", // 编译后的js代码遵循何种规范，可以是es3/es5/es6等等
     "esModuleInterop": true,
-    "module": "commonjs",
+    "module": "commonjs", // 指定设置编译后的js代码，使用何种模块规范。
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
