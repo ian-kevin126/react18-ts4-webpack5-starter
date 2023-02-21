@@ -19,7 +19,7 @@ function App() {
   return <div>
     <h2>webpack5-react-ts</h2>
     <div className={lessStyles['lessBox']}>
-      <div className={lessStyles['box']}>lessBox（天下无敌）
+      <div className={lessStyles['box']}>lessBox（east_white）
       <img src={smallImg} alt="小于10kb的图片" />
       <img src={bigImg} alt="大于于10kb的图片" />
       <img src={chengzi} alt="橙子font" />
