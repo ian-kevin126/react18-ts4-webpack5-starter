@@ -9,6 +9,7 @@ import chengzi from '@/assets/imgs/chengzi.png'
 import memberList from './test.json'
 import ClassComp from '@/components/Class'
 import { Demo1, Demo2 } from '@/components'
+import {watchEnv, add} from '@/utils/watch'
 
 function App() {
   const [ count, setCounts ] = useState('')
@@ -43,6 +44,7 @@ function App() {
         <input type="text" />
     </div>
     <Demo1 />
+    <div>{add(1, 2)}</div>
   </div>
 }
 

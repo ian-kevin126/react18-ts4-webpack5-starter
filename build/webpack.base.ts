@@ -2,10 +2,10 @@ import { Configuration, DefinePlugin } from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import WebpackBar from 'webpackbar';
 import * as dotenv from "dotenv";
+import { isDev } from "./constants";
 
 const path = require("path");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const isDev = process.env.NODE_ENV === 'development' // 是否是开发模式
 
 console.log("NODE_ENV", process.env.NODE_ENV);
 console.log("BASE_ENV", process.env.BASE_ENV);

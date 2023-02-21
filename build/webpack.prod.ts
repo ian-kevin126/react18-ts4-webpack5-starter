@@ -8,6 +8,11 @@ import CompressionPlugin from 'compression-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import baseConfig from "./webpack.base";
 
+const globAll = require('glob-all')
+const glob = require("glob");
+// 注意这里的引用是{ PurgeCSSPlugin }，npm上官方的引入是错误的。
+const { PurgeCSSPlugin } = require('purgecss-webpack-plugin')
+
 const prodConfig: Configuration = merge(baseConfig, {
   mode: "production", // 生产模式,会开启tree-shaking和压缩代码,以及其他优化
   /**
@@ -26,7 +31,30 @@ const prodConfig: Configuration = merge(baseConfig, {
       ],
     }),
     new MiniCssExtractPlugin({
-      filename: 'static/css/[name].[contenthash:8].css' // 抽离css的输出目录和名称
+      filename: 'static/css/[name].[contenthash:8].css', // 抽离css的输出目录和名称
+      chunkFilename: 'static/css/[name].[contenthash:8].css' 
+    }),
+    // 清理无用css，检测src下所有tsx文件和public下index.html中使用的类名和id和标签名称
+    // 只打包这些文件中用到的样式
+    // new PurgeCSSPlugin({
+    //   paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+    // }),
+    new PurgeCSSPlugin({
+      // paths: globAll.sync(
+      //   [`${path.join(__dirname, '../src')}/**/*`, path.join(__dirname, '../public/index.html')],
+      //   {
+      //     nodir: true
+      //   }
+      // ),
+      paths: glob.sync(`${path.join(__dirname, '../src')}/**/*`, {
+        nodir: true,
+      }),
+      // 用 only 来指定 purgecss-webpack-plugin 的入口
+      // https://github.com/FullHuman/purgecss/tree/main/packages/purgecss-webpack-plugin
+      only: ["dist"],
+      safelist: {
+        standard: [/^ant-/] // 过滤以ant-开头的类名，哪怕没用到也不删除
+      }
     }),
     // 打包时生成gzip文件
     new CompressionPlugin({
@@ -38,43 +66,82 @@ const prodConfig: Configuration = merge(baseConfig, {
     })
   ],
   optimization: {
-    // splitChunks: {
-    //   chunks: "all",
-    // },
+    // 减少入口文件打包的体积，运行时代码会独立抽离成一个runtime的文件
     runtimeChunk: {
       name: 'mainifels'
     },
-    minimize: true,
+    // 还要在 package.json 中配置 "sideEffects": false,
+    // sideEffects: true, // 开启sideEffects
+    // usedExports: true,
+    minimize: true, // 开启terser
     minimizer: [
       new CssMinimizerPlugin(), // 压缩css
       new TerserPlugin({
         parallel: true, // 开启多线程压缩
+        extractComments: false, // 是否将注释剥离到单独文件，默认是true
         terserOptions: {
+          output: {
+            comments: false,
+            ecma: 5,
+          },
+          sourceMap: true,
+          mangle: true,
           compress: {
-            pure_funcs: ['console.log'] // 删除console.log
+            ecma: 5,
+            keep_fargs: false,
+            pure_getters: true,
+            hoist_funs: true,
+            pure_funcs: [
+              'console.log',
+              'classCallCheck',
+              '_classCallCheck',
+              '_possibleConstructorReturn',
+              'Object.freeze',
+              'invariant',
+              'warning',
+            ] // 删除console.log
           }
         }
       })
     ],
     splitChunks: {
+      // include all types of chunks 支持异步和非异步共享chunk
+      chunks: 'all',
+      minSize: 20000,
+      minRemainingSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      enforceSizeThreshold: 50000,
       // 分隔代码
       cacheGroups: {
         vendors: {
           // 提取node_modules代码
           test: /node_modules/, // 只匹配node_modules里面的模块
-          name: 'vendors', // 提取文件命名为vendors,js后缀和chunkhash会自动加
+          // name: 'vendors', // 提取文件命名为vendors,js后缀和chunkhash会自动加，可以不要定义固定的name
           minChunks: 1, // 只要使用一次就提取出来
           chunks: 'initial', // 只提取初始化就能获取到的模块,不管异步的
           minSize: 0, // 提取代码体积大于0就提取出来
-          priority: 1 // 提取优先级为1
+          enforce: true,
+          reuseExistingChunk: true,
+          priority: 10 // 提取优先级为1
         },
         commons: {
           // 提取页面公共代码
           name: 'commons', // 提取文件命名为commons
           minChunks: 2, // 只要使用两次就提取出来
           chunks: 'initial', // 只提取初始化就能获取到的模块,不管异步的
+          priority: 0, // 优先级
+          enforce: true,
+          reuseExistingChunk: true,
           minSize: 0 // 提取代码体积大于0就提取出来
-        }
+        },
+        styles: {
+          name: "styles",
+          test: /\.css$/,
+          chunks: "all",
+          enforce: true,
+        },
       }
     }
   },

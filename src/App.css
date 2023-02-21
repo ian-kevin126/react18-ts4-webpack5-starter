@@ -1,3 +1,10 @@
 h2 {
     color: red;
 }
+
+.east_white {
+    display: block;
+    background-color: red;
+    width: 111px;
+    height: 111px;
+}
