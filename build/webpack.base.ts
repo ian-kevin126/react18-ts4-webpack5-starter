@@ -4,6 +4,8 @@ import WebpackBar from 'webpackbar';
 import * as dotenv from "dotenv";
 
 const path = require("path");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const isDev = process.env.NODE_ENV === 'development' // 是否是开发模式
 
 console.log("NODE_ENV", process.env.NODE_ENV);
 console.log("BASE_ENV", process.env.BASE_ENV);
@@ -24,7 +26,7 @@ const mediaRegex = /\.(mp4|webm|ogg|mp3|wav|flac|aac)$/;
 const jsonRegex = /\.json$/;
 
 const styleLoadersArray = [
-  "style-loader",
+  isDev ? "style-loader" : MiniCssExtractPlugin.loader, // 开发环境使用style-looader,打包模式抽离css
   {
     loader: "css-loader",
     options: {
