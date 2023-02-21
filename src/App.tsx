@@ -8,6 +8,7 @@ import bigImg from '@/assets/imgs/10kb_img.png'
 import chengzi from '@/assets/imgs/chengzi.png'
 import memberList from './test.json'
 import ClassComp from '@/components/Class'
+import { Demo1, Demo2 } from '@/components'
 
 function App() {
   const [ count, setCounts ] = useState('')
@@ -41,6 +42,7 @@ function App() {
         <p>非受控组件</p>
         <input type="text" />
     </div>
+    <Demo1 />
   </div>
 }
 
