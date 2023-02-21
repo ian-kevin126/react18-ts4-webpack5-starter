@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import '@/App.css'
+import { Suspense, lazy, useState } from 'react'
+// import '@/App.css'
 import lessStyles from '@/app.less'
 import scssStyles from '@/app.module.scss'
 import stylStyles from '@/app.module.styl'
@@ -10,13 +10,24 @@ import memberList from './test.json'
 import ClassComp from '@/components/Class'
 import { Demo1, Demo2 } from '@/components'
 import {watchEnv, add} from '@/utils/watch'
+import LazyWrapper from '@/components/LazyWrapper'
+
+const LazyDemo = lazy(() => import('@/components/LazyDemo')) 
 
 function App() {
   const [ count, setCounts ] = useState('')
+  const [ show, setShow ] = useState(false)
+
   const onChange = (e: any) => {
     setCounts(e.target.value)
   }
   console.log('memberList', memberList)
+
+  // 点击事件中动态引入css, 设置show为true
+  const handleOnClick = () => {
+    import('@/App.css')
+    setShow(true)
+  }
 
   return <div>
     <h2>webpack5-react-ts</h2>
@@ -45,6 +56,11 @@ function App() {
     </div>
     <Demo1 />
     <div>{add(1, 2)}</div>
+    <>
+      <h2 onClick={handleOnClick}>展示</h2>
+      {/* show为true时加载LazyDemo组件 */}
+      { show && <Suspense fallback={null}><LazyWrapper path='LazyDemo' /></Suspense> }
+    </>
   </div>
 }
 
