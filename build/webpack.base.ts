@@ -17,6 +17,9 @@ const cssRegex = /\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const lessRegex = /\.less$/;
 const stylRegex = /\.styl$/;
+const imageRegex = /\.(png|jpe?g|gif|svg)$/i;
+const fontRegex = /\.(ttf|woff2?|eot|otf)$/;
+const mediaRegex = /\.(mp4|webm|ogg|mp3|wav|flac|aac)$/;
 
 const styleLoadersArray = [
   "style-loader",
@@ -39,6 +42,7 @@ const baseConfig: Configuration = {
     path: path.join(__dirname, "../dist"), // 打包结果输出路径
     clean: true, // webpack4需要配置clean-webpack-plugin来删除dist文件,webpack5内置了
     publicPath: "/", // 打包后文件的公共前缀路径
+    assetModuleFilename: 'images/[hash:8][ext][query]'
   },
   // loader 配置
   module: {
@@ -83,10 +87,57 @@ const baseConfig: Configuration = {
           "stylus-loader",
         ],
       },
+      {
+        test: imageRegex, // 匹配图片文件
+        type: "asset", // 设置资源处理的类型为asset
+        parser: {
+          // 转为inline dataUrl的条件
+          dataUrlCondition: {
+            // 默认限制为8kb，现在调整限制为10kb，大文件直接作为asset/resource类型文件输出
+            maxSize: 10 * 1024,
+          },
+        },
+        generator:{ 
+          filename:'static/images/[hash:8][ext][query]', // 文件输出目录和命名
+        },
+      },
+      {
+        // 匹配json文件
+        test: /\.json$/,
+        type: "asset/resource", // 将json文件视为文件类型
+        generator: {
+          // 这里专门针对json文件的处理
+          filename: "static/json/[name].[hash][ext][query]",
+        },
+      },
+      {
+        test: fontRegex, // 匹配字体图标文件
+        type: "asset/resource", // type选择asset
+        // parser: {
+        //   dataUrlCondition: {
+        //     maxSize: 10 * 1024, // 小于10kb转base64
+        //   }
+        // },
+        generator:{ 
+          filename:'static/fonts/[hash:8][ext][query]', // 文件输出目录和命名
+        },
+      },
+      {
+        test: mediaRegex, // 匹配媒体文件
+        type: "asset", // type选择asset
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024, // 小于10kb转base64
+          }
+        },
+        generator:{ 
+          filename:'static/media/[hash:8][ext][query]', // 文件输出目录和命名
+        },
+      },
     ],
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx", ".less", ".css"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".less", ".css", ".scss", ".sass", ".styl", ".json"],
     // 别名需要配置两个地方，这里和 tsconfig.json
     alias: {
       "@": path.join(__dirname, "../src"),

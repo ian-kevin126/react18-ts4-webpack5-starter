@@ -1,5 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import App from './App';
+// import '@/assets/css/iconfont.css'
 
 // const root = document.getElementById('root');
 const root = document.querySelector('#root')

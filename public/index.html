@@ -8,11 +8,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>webpack5-react-ts</title>
+    <script src="../src/assets/fonts/iconfont.js"></script>
+    <style>
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+            color: red;
+        }
+
+        /* @font-face {
+            font-family: 'iconfont';
+            src: url('../src/assets/fonts/iconfont.ttf') format('truetype'),
+                url('../src/assets/fonts/iconfont.woff') format('woff'),
+                url('../src/assets/fonts/iconfont.svg') format('svg'),
+                url('../src/assets/fonts/iconfont.eot') format('embedded-opentype'),
+                url('../src/assets/fonts/iconfont.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .icon {
+            font-family: 'iconfont';
+            font-size: 20px;
+            color: red;
+        } */
+    </style>
 </head>
 
 <body>
     <!-- 容器节点 -->
     <div id="root"></div>
+    <i class="iconfont icon-chengzi"></i>
+    <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-chengzi"></use>
+    </svg>
+    <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-buding"></use>
+    </svg>
 </body>
+
 
 </html>

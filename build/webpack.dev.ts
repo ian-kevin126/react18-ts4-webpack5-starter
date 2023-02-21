@@ -1,8 +1,9 @@
 import path from "path";
-import { merge } from "webpack-merge";
 import webpack, { Configuration as WebpackConfiguration } from "webpack";
-import WebpackDevServer from "webpack-dev-server";
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
+import WebpackDevServer from "webpack-dev-server";
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import { merge } from "webpack-merge";
 import baseConfig from "./webpack.base";
 
 // 运行命令的时候重启一次打开一个tab 页很烦，所以呢优化一下
@@ -28,6 +29,9 @@ const devConfig: Configuration = merge(baseConfig, {
     ● 我们希望能够找到源代码的错误,而不是打包后的,所以需要加上 module
    */
   devtool: "eval-cheap-module-source-map",
+  plugins: [
+    new ReactRefreshWebpackPlugin(), // 添加热更新插件
+  ],
 });
 
 const devServer = new WebpackDevServer(
