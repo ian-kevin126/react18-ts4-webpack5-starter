@@ -26,15 +26,18 @@ specifiers:
   react-dom: ^18.2.0
   react-refresh: ^0.14.0
   sass-loader: ^13.2.0
+  speed-measure-webpack-plugin: ^1.5.0
   style-loader: ^3.3.1
   stylus: ^0.59.0
   stylus-loader: ^7.1.0
+  thread-loader: ^3.0.4
   ts-node: ^10.9.1
   typescript: ^4.9.5
   webpack: ^5.75.0
   webpack-cli: ^5.0.1
   webpack-dev-server: ^4.11.1
   webpack-merge: ^5.8.0
+  webpackbar: ^5.0.2
 
 dependencies:
   dotenv: 16.0.3
@@ -64,15 +67,18 @@ devDependencies:
   postcss-loader: 7.0.2_webpack@5.75.0
   react-refresh: 0.14.0
   sass-loader: 13.2.0_kau32e7346cr5lsfcngaaxrcra
+  speed-measure-webpack-plugin: 1.5.0_webpack@5.75.0
   style-loader: 3.3.1_webpack@5.75.0
   stylus: 0.59.0
   stylus-loader: 7.1.0_577zv5myo6oqbmxnic7hzxwylm
+  thread-loader: 3.0.4_webpack@5.75.0
   ts-node: 10.9.1_bdgp3l2zgaopogaavxusmetvge
   typescript: 4.9.5
   webpack: 5.75.0_webpack-cli@5.0.1
   webpack-cli: 5.0.1_uaydpeuxkjjcxdbyfgk36cjdxi
   webpack-dev-server: 4.11.1_rjsyjcrmk25kqsjzwkvj3a2evq
   webpack-merge: 5.8.0
+  webpackbar: 5.0.2_webpack@5.75.0
 
 packages:
 
@@ -2476,6 +2482,10 @@ packages:
     engines: {node: '>=0.8'}
     dev: true
 
+  /consola/2.15.3:
+    resolution: {integrity: sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw==}
+    dev: true
+
   /console-control-strings/1.1.0:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
@@ -3660,6 +3670,10 @@ packages:
     hasBin: true
     dev: true
 
+  /json-parse-better-errors/1.0.2:
+    resolution: {integrity: sha512-mrqyZKfX5EhL7hvqcV6WG1yYjnjeuYDzDhhcAAUrq8Po85NBQBJP+ZDUT75qZQ98IkUoBqdkExkukOU7Ts2wrw==}
+    dev: true
+
   /json-parse-even-better-errors/2.3.1:
     resolution: {integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==}
     dev: true
@@ -4501,6 +4515,11 @@ packages:
       renderkid: 3.0.0
     dev: true
 
+  /pretty-time/1.1.0:
+    resolution: {integrity: sha512-28iF6xPQrP8Oa6uxE6a1biz+lWeTOAPKggvjB8HAs6nVMKZwf5bG++632Dx614hIWgUPkgivRfG+a8uAXGTIbA==}
+    engines: {node: '>=4'}
+    dev: true
+
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
     dev: true
@@ -5116,6 +5135,16 @@ packages:
       - supports-color
     dev: true
 
+  /speed-measure-webpack-plugin/1.5.0_webpack@5.75.0:
+    resolution: {integrity: sha512-Re0wX5CtM6gW7bZA64ONOfEPEhwbiSF/vz6e2GvadjuaPrQcHTQdRGsD8+BE7iUOysXH8tIenkPCQBEcspXsNg==}
+    engines: {node: '>=6.0.0'}
+    peerDependencies:
+      webpack: ^1 || ^2 || ^3 || ^4 || ^5
+    dependencies:
+      chalk: 4.1.2
+      webpack: 5.75.0_webpack-cli@5.0.1
+    dev: true
+
   /ssri/8.0.1:
     resolution: {integrity: sha512-97qShzy1AiyxvPNIkLWoGua7xoQzzPjQ0HAH4B0rWKo7SZ6USuPcrUiAFrws0UH8RrbWmgq3LMTObhPIHbbBeQ==}
     engines: {node: '>= 8'}
@@ -5142,6 +5171,10 @@ packages:
   /statuses/2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
+    dev: true
+
+  /std-env/3.3.2:
+    resolution: {integrity: sha512-uUZI65yrV2Qva5gqE0+A7uVAvO40iPo6jGhs7s8keRfHCmtg+uB2X6EiLGCI9IgL1J17xGhvoOqSz79lzICPTA==}
     dev: true
 
   /stdout-stream/1.4.1:
@@ -5302,6 +5335,20 @@ packages:
       acorn: 8.8.2
       commander: 2.20.3
       source-map-support: 0.5.21
+    dev: true
+
+  /thread-loader/3.0.4_webpack@5.75.0:
+    resolution: {integrity: sha512-ByaL2TPb+m6yArpqQUZvP+5S1mZtXsEP7nWKKlAUTm7fCml8kB5s1uI3+eHRP2bk5mVYfRSBI7FFf+tWEyLZwA==}
+    engines: {node: '>= 10.13.0'}
+    peerDependencies:
+      webpack: ^4.27.0 || ^5.0.0
+    dependencies:
+      json-parse-better-errors: 1.0.2
+      loader-runner: 4.3.0
+      loader-utils: 2.0.4
+      neo-async: 2.6.2
+      schema-utils: 3.1.1
+      webpack: 5.75.0_webpack-cli@5.0.1
     dev: true
 
   /thunky/1.1.0:
@@ -5666,6 +5713,19 @@ packages:
       - '@swc/core'
       - esbuild
       - uglify-js
+    dev: true
+
+  /webpackbar/5.0.2_webpack@5.75.0:
+    resolution: {integrity: sha512-BmFJo7veBDgQzfWXl/wwYXr/VFus0614qZ8i9znqcl9fnEdiVkdbi0TedLQ6xAK92HZHDJ0QmyQ0fmuZPAgCYQ==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      webpack: 3 || 4 || 5
+    dependencies:
+      chalk: 4.1.2
+      consola: 2.15.3
+      pretty-time: 1.1.0
+      std-env: 3.3.2
+      webpack: 5.75.0_webpack-cli@5.0.1
     dev: true
 
   /websocket-driver/0.7.4:

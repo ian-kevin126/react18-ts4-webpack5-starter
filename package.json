@@ -11,7 +11,8 @@
     "build:dev": "cross-env NODE_ENV=production BASE_ENV=development webpack -c build/webpack.prod.ts",
     "build:test": "cross-env NODE_ENV=production BASE_ENV=test webpack -c build/webpack.prod.ts",
     "build:pre": "cross-env NODE_ENV=production BASE_ENV=pre webpack -c build/webpack.prod.ts",
-    "build:prod": "cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.prod.ts"
+    "build:prod": "cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.prod.ts",
+    "build:analy": "cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.analy.ts"
   },
   "keywords": [],
   "author": "",
@@ -44,14 +45,17 @@
     "postcss-loader": "^7.0.2",
     "react-refresh": "^0.14.0",
     "sass-loader": "^13.2.0",
+    "speed-measure-webpack-plugin": "^1.5.0",
     "style-loader": "^3.3.1",
     "stylus": "^0.59.0",
     "stylus-loader": "^7.1.0",
+    "thread-loader": "^3.0.4",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.5",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1",
-    "webpack-merge": "^5.8.0"
+    "webpack-merge": "^5.8.0",
+    "webpackbar": "^5.0.2"
   }
 }

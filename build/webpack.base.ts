@@ -1,5 +1,6 @@
 import { Configuration, DefinePlugin } from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import WebpackBar from 'webpackbar';
 import * as dotenv from "dotenv";
 
 const path = require("path");
@@ -20,6 +21,7 @@ const stylRegex = /\.styl$/;
 const imageRegex = /\.(png|jpe?g|gif|svg)$/i;
 const fontRegex = /\.(ttf|woff2?|eot|otf)$/;
 const mediaRegex = /\.(mp4|webm|ogg|mp3|wav|flac|aac)$/;
+const jsonRegex = /\.json$/;
 
 const styleLoadersArray = [
   "style-loader",
@@ -49,7 +51,9 @@ const baseConfig: Configuration = {
     rules: [
       {
         test: tsxRegex, // 匹配.ts, tsx文件
-        use: "babel-loader"
+        exclude: /node_modules/,
+        use: 'babel-loader'
+        // use: ['thread-loader', 'babel-loader'] // 项目变大之后再开启多进程loader
       },
       {
         test: cssRegex, //匹配 css 文件
@@ -103,7 +107,7 @@ const baseConfig: Configuration = {
       },
       {
         // 匹配json文件
-        test: /\.json$/,
+        test: jsonRegex,
         type: "asset/resource", // 将json文件视为文件类型
         generator: {
           // 这里专门针对json文件的处理
@@ -142,7 +146,7 @@ const baseConfig: Configuration = {
     alias: {
       "@": path.join(__dirname, "../src"),
     },
-    // modules: [path.resolve(__dirname, "../node_modules")], // 查找第三方模块只在本项目的node_modules中查找
+    // modules: [path.join(__dirname, "../node_modules")], // 查找第三方模块只在本项目的node_modules中查找
   },
   // plugins 的配置
   plugins: [
@@ -169,7 +173,19 @@ const baseConfig: Configuration = {
       "process.env.BASE_ENV": JSON.stringify(process.env.BASE_ENV),
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
     }),
+    new WebpackBar({
+      color: "#85d",  // 默认green，进度条颜色支持HEX
+      basic: false,   // 默认true，启用一个简单的日志报告器
+      profile:false,  // 默认false，启用探查器。
+    })
   ],
+  cache: {
+    /*
+    webpack5 较于 webpack4,新增了持久化缓存、改进缓存算法等优化,通过配置 webpack 持久化缓存,来缓存生成的 webpack 模块和 chunk,
+    改善下一次打包的构建速度,可提速 90% 左右,配置也简单
+    */
+    type: "filesystem", // 使用文件缓存
+  },
 };
 
 export default baseConfig;
