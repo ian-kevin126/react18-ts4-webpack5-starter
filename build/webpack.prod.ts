@@ -5,9 +5,8 @@ import CopyPlugin from "copy-webpack-plugin";
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin'
 import CompressionPlugin from 'compression-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import baseConfig from "./webpack.base";
-
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const prodConfig: Configuration = merge(baseConfig, {
   mode: "production", // 生产模式,会开启tree-shaking和压缩代码,以及其他优化
@@ -27,7 +26,7 @@ const prodConfig: Configuration = merge(baseConfig, {
       ],
     }),
     new MiniCssExtractPlugin({
-      filename: 'static/css/[name].css' // 抽离css的输出目录和名称
+      filename: 'static/css/[name].[contenthash:8].css' // 抽离css的输出目录和名称
     }),
     // 打包时生成gzip文件
     new CompressionPlugin({
