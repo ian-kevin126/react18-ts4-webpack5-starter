@@ -14,6 +14,20 @@ import LazyWrapper from '@/components/LazyWrapper'
 
 const LazyDemo = lazy(() => import('@/components/LazyDemo')) 
 
+// prefetch
+const PreFetchDemo = lazy(() => import(
+  /* webpackChunkName: "PreFetchDemo" */
+  /*webpackPrefetch: true*/
+  '@/components/PreFetchDemo'
+))
+
+// preload
+const PreloadDemo = lazy(() => import(
+  /* webpackChunkName: "PreloadDemo" */
+  /*webpackPreload: true*/
+  '@/components/PreloadDemo'
+ ))
+
 function App() {
   const [ count, setCounts ] = useState('')
   const [ show, setShow ] = useState(false)
@@ -61,6 +75,13 @@ function App() {
       {/* show为true时加载LazyDemo组件 */}
       { show && <Suspense fallback={null}><LazyWrapper path='LazyDemo' /></Suspense> }
     </>
+    { show && (
+      <>
+        <Suspense fallback={null}><PreloadDemo /></Suspense>
+        <Suspense fallback={null}><PreFetchDemo /></Suspense>
+      </>
+     ) 
+    }
   </div>
 }
 
