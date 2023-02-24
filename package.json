@@ -48,7 +48,6 @@
     "less-loader": "^11.1.0",
     "mini-css-extract-plugin": "^2.7.2",
     "node-sass": "^8.0.0",
-    "postcss": "^8.4.21",
     "postcss-loader": "^7.0.2",
     "purgecss-webpack-plugin": "^5.0.0",
     "react-refresh": "^0.14.0",
