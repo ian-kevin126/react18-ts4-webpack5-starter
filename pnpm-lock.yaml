@@ -26,6 +26,7 @@ specifiers:
   less-loader: ^11.1.0
   mini-css-extract-plugin: ^2.7.2
   node-sass: ^8.0.0
+  postcss: ^8.4.21
   postcss-loader: ^7.0.2
   purgecss-webpack-plugin: ^5.0.0
   react: ^18.2.0
@@ -62,7 +63,7 @@ devDependencies:
   '@types/node': 18.11.18
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
-  autoprefixer: 10.4.13
+  autoprefixer: 10.4.13_postcss@8.4.21
   babel-loader: 9.1.2_la66t7xldg4uecmyawueag5wkm
   clean-webpack-plugin: 4.0.0_webpack@5.75.0
   compression-webpack-plugin: 10.0.0_webpack@5.75.0
@@ -77,7 +78,8 @@ devDependencies:
   less-loader: 11.1.0_less@4.1.3+webpack@5.75.0
   mini-css-extract-plugin: 2.7.2_webpack@5.75.0
   node-sass: 8.0.0
-  postcss-loader: 7.0.2_webpack@5.75.0
+  postcss: 8.4.21
+  postcss-loader: 7.0.2_6jdsrmfenkuhhw3gx4zvjlznce
   purgecss-webpack-plugin: 5.0.0_webpack@5.75.0
   react-refresh: 0.14.0
   sass-loader: 13.2.0_kau32e7346cr5lsfcngaaxrcra
@@ -2176,7 +2178,7 @@ packages:
     resolution: {integrity: sha512-VUeSMD8nEGBWaZK4lizI1sf3yEC7pnAQ/mrI7pC2fBz2s/tq5jWWEngTwaf0Gruu/OoXRGLGg1XFqpYBiGTYJA==}
     dev: true
 
-  /autoprefixer/10.4.13:
+  /autoprefixer/10.4.13_postcss@8.4.21:
     resolution: {integrity: sha512-49vKpMqcZYsJjwotvt4+h/BCjJVnhGwcLpDt5xkcaOG3eLrG/HUYLagrihYsQ+qrIBgIzX1Rw7a6L8I/ZA1Atg==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -2188,6 +2190,7 @@ packages:
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
+      postcss: 8.4.21
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -4925,7 +4928,7 @@ packages:
       postcss: 8.4.21
     dev: true
 
-  /postcss-loader/7.0.2_webpack@5.75.0:
+  /postcss-loader/7.0.2_6jdsrmfenkuhhw3gx4zvjlznce:
     resolution: {integrity: sha512-fUJzV/QH7NXUAqV8dWJ9Lg4aTkDCezpTS5HgJ2DvqznexTbSTxgi/dTECvTZ15BwKTtk8G/bqI/QTu2HPd3ZCg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -4934,6 +4937,7 @@ packages:
     dependencies:
       cosmiconfig: 7.1.0
       klona: 2.0.6
+      postcss: 8.4.21
       semver: 7.3.8
       webpack: 5.75.0_webpack-cli@5.0.1
     dev: true

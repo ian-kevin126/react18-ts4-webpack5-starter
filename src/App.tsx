@@ -39,6 +39,7 @@ function App() {
 
   // 点击事件中动态引入css, 设置show为true
   const handleOnClick = () => {
+    // 懒加载样式文件
     import('@/App.css')
     setShow(true)
   }
