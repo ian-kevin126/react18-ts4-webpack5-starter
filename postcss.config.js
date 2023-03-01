@@ -1,6 +1,6 @@
 module.exports = {
-  ident: "postcss",
-  plugins: [require("autoprefixer")],
+  ident: 'postcss',
+  plugins: [require('autoprefixer')]
   // plugins: [require("autoprefixer"), require("tailwindcss")],
   // postcssOptions: {
   //   plugins: [
@@ -8,4 +8,4 @@ module.exports = {
   //     require('tailwindcss')
   //   ]
   // }
-};
+}
