@@ -5,3 +5,5 @@ env
 pnpm-lock.yaml
 README.md
 src/assets/*
+.vscode
+public
