@@ -5,6 +5,7 @@
     "pnpm-lock.yaml": true
   },
   "editor.formatOnSave": true,
+  "prettier.requireConfig": true,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -38,5 +39,8 @@
   "[stylus]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "liveServer.settings.port": 5502
+  "eslint.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

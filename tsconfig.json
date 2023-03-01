@@ -8,6 +8,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "allowJs": true, // 允许编辑js文件
+    "noImplicitAny": false,
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {

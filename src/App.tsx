@@ -8,11 +8,11 @@ import bigImg from '@/assets/imgs/10kb_img.png'
 import chengzi from '@/assets/imgs/chengzi.png'
 import memberList from './test.json'
 import ClassComp from '@/components/Class'
-import { Demo1, Demo2 } from '@/components'
-import { watchEnv, add } from '@/utils/watch'
+import { Demo1 } from '@/components'
+import { add } from '@/utils/watch'
 import LazyWrapper from '@/components/LazyWrapper'
 
-const LazyDemo = lazy(() => import('@/components/LazyDemo'))
+// const LazyDemo = lazy(() => import('@/components/LazyDemo'))
 
 // prefetch
 const PreFetchDemo = lazy(

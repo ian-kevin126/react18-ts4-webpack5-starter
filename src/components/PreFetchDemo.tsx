@@ -1,5 +1,3 @@
-import React from 'react'
-
 function PreFetchDemo() {
   return <h3>我是PreFetchDemo组件</h3>
 }
