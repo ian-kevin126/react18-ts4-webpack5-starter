@@ -13,7 +13,8 @@
     "build:pre": "cross-env NODE_ENV=production BASE_ENV=pre webpack -c build/webpack.prod.ts",
     "build:prod": "cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.prod.ts",
     "build:analy": "cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.analy.ts",
-    "build:dll": "ts-node ./build/webpack.dll.ts"
+    "build:dll": "ts-node ./build/webpack.dll.ts",
+    "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,scss,styl,html,md}\""
   },
   "keywords": [],
   "author": "",
@@ -49,6 +50,7 @@
     "less-loader": "^11.1.0",
     "mini-css-extract-plugin": "^2.7.2",
     "postcss-loader": "^7.0.2",
+    "prettier": "^2.8.4",
     "purgecss-webpack-plugin": "^5.0.0",
     "react-refresh": "^0.14.0",
     "sass": "^1.58.3",
