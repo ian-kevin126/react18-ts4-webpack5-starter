@@ -11,6 +11,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/jsx-runtime'
     // 'plugin:prettier/recommended'
+    // 'prettier'
   ],
   overrides: [],
   parser: '@typescript-eslint/parser',
