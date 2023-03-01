@@ -2,7 +2,7 @@
   "search.exclude": {
     "/node_modules": true,
     "dist": true,
-    "pnpm-lock.sh": true
+    "pnpm-lock.yaml": true
   },
   "editor.formatOnSave": true,
   "[javascript]": {
