@@ -1,20 +1,20 @@
-import path from "path";
-import { Configuration } from "webpack";
-import { merge } from "webpack-merge";
-import CopyPlugin from "copy-webpack-plugin";
-import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import path from 'path'
+import { Configuration } from 'webpack'
+import { merge } from 'webpack-merge'
+import CopyPlugin from 'copy-webpack-plugin'
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
 import TerserPlugin from 'terser-webpack-plugin'
 import CompressionPlugin from 'compression-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import baseConfig from "./webpack.base";
+import baseConfig from './webpack.base'
 
-const globAll = require('glob-all')
-const glob = require("glob");
+// const globAll = require('glob-all')
+const glob = require('glob')
 // 注意这里的引用是{ PurgeCSSPlugin }，npm上官方的引入是错误的。
 const { PurgeCSSPlugin } = require('purgecss-webpack-plugin')
 
 const prodConfig: Configuration = merge(baseConfig, {
-  mode: "production", // 生产模式,会开启tree-shaking和压缩代码,以及其他优化
+  mode: 'production', // 生产模式,会开启tree-shaking和压缩代码,以及其他优化
   /**
    * 打包环境推荐：none(就是不配置devtool选项了，不是配置devtool: 'none')
    * ● none话调试只能看到编译后的代码,也不会泄露源代码,打包速度也会比较快。
@@ -24,15 +24,15 @@ const prodConfig: Configuration = merge(baseConfig, {
     new CopyPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, "../public"), // 复制public下文件
-          to: path.resolve(__dirname, "../dist"), // 复制到dist目录中
-          filter: (source) => !source.includes("index.html"), // 忽略index.html
-        },
-      ],
+          from: path.resolve(__dirname, '../public'), // 复制public下文件
+          to: path.resolve(__dirname, '../dist'), // 复制到dist目录中
+          filter: source => !source.includes('index.html') // 忽略index.html
+        }
+      ]
     }),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].[contenthash:8].css', // 抽离css的输出目录和名称
-      chunkFilename: 'static/css/[name].[contenthash:8].css' 
+      chunkFilename: 'static/css/[name].[contenthash:8].css'
     }),
     // 清理无用css，检测src下所有tsx文件和public下index.html中使用的类名和id和标签名称
     // 只打包这些文件中用到的样式
@@ -47,11 +47,11 @@ const prodConfig: Configuration = merge(baseConfig, {
       //   }
       // ),
       paths: glob.sync(`${path.join(__dirname, '../src')}/**/*`, {
-        nodir: true,
+        nodir: true
       }),
       // 用 only 来指定 purgecss-webpack-plugin 的入口
       // https://github.com/FullHuman/purgecss/tree/main/packages/purgecss-webpack-plugin
-      only: ["dist"],
+      only: ['dist'],
       safelist: {
         standard: [/^ant-/] // 过滤以ant-开头的类名，哪怕没用到也不删除
       }
@@ -82,7 +82,7 @@ const prodConfig: Configuration = merge(baseConfig, {
         terserOptions: {
           output: {
             comments: false,
-            ecma: 5,
+            ecma: 5
           },
           sourceMap: true,
           mangle: true,
@@ -98,7 +98,7 @@ const prodConfig: Configuration = merge(baseConfig, {
               '_possibleConstructorReturn',
               'Object.freeze',
               'invariant',
-              'warning',
+              'warning'
             ] // 删除console.log
           }
         }
@@ -137,11 +137,11 @@ const prodConfig: Configuration = merge(baseConfig, {
           minSize: 0 // 提取代码体积大于0就提取出来
         },
         styles: {
-          name: "styles",
+          name: 'styles',
           test: /\.css$/,
-          chunks: "all",
-          enforce: true,
-        },
+          chunks: 'all',
+          enforce: true
+        }
       }
     }
   },
@@ -150,6 +150,6 @@ const prodConfig: Configuration = merge(baseConfig, {
     maxAssetSize: 4000000, // 整数类型（以字节为单位）
     maxEntrypointSize: 5000000 // 整数类型（以字节为单位）
   }
-});
+})
 
-export default prodConfig;
+export default prodConfig
