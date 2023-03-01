@@ -12,7 +12,7 @@ import { Demo1, Demo2 } from '@/components'
 import {watchEnv, add} from '@/utils/watch'
 import LazyWrapper from '@/components/LazyWrapper'
 
-const LazyDemo = lazy(() => import('@/components/LazyDemo')) 
+const LazyDemo = lazy(() => import('@/components/LazyDemo'))
 
 // prefetch
 const PreFetchDemo = lazy(() => import(
@@ -51,8 +51,8 @@ function App() {
       <img src={smallImg} alt="小于10kb的图片" />
       <img src={bigImg} alt="大于于10kb的图片" />
       <img src={chengzi} alt="橙子font" />
-      <div className={lessStyles['smallImg']}>小图片背景</div> 
-      <div className={lessStyles['bigImg']}>大图片背景</div> 
+      <div className={lessStyles['smallImg']}>小图片背景</div>
+      <div className={lessStyles['bigImg']}>大图片背景</div>
       </div>
     </div>
     <div className={scssStyles['scssBox']}>
@@ -81,7 +81,7 @@ function App() {
         <Suspense fallback={null}><PreloadDemo /></Suspense>
         <Suspense fallback={null}><PreFetchDemo /></Suspense>
       </>
-     ) 
+     )
     }
   </div>
 }

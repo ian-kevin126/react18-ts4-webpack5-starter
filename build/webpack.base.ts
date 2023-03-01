@@ -83,7 +83,12 @@ const baseConfig: Configuration = {
         test: sassRegex,
         use: [
           ...styleLoadersArray,
-          "sass-loader",
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass'), // 使用dart-sass代替node-sass
+            },
+          },
         ],
       },
       {
@@ -103,7 +108,7 @@ const baseConfig: Configuration = {
             maxSize: 10 * 1024,
           },
         },
-        generator:{ 
+        generator:{
           filename:'static/images/[name].[contenthash:8][ext]', // 文件输出目录和命名
         },
       },
@@ -124,7 +129,7 @@ const baseConfig: Configuration = {
         //     maxSize: 10 * 1024, // 小于10kb转base64
         //   }
         // },
-        generator:{ 
+        generator:{
           filename:'static/json/[name].[contenthash:8][ext]', // 文件输出目录和命名
         },
       },
@@ -136,7 +141,7 @@ const baseConfig: Configuration = {
             maxSize: 10 * 1024, // 小于10kb转base64
           }
         },
-        generator:{ 
+        generator:{
           filename:'static/media/[name].[contenthash:8][ext]', // 文件输出目录和命名
         },
       },
