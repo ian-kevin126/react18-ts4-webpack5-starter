@@ -7,3 +7,5 @@ README.md
 src/assets/*
 .vscode
 public
+.github
+.husky

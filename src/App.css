@@ -2,9 +2,9 @@ h2 {
   color: red;
 }
 
-.east_white {
+.east-white {
   display: block;
-  background-color: red;
   width: 111px;
   height: 111px;
+  background-color: red;
 }
