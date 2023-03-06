@@ -1,6 +1,6 @@
 {
   "name": "fe",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,12 @@
     "lint:md": "npx markdownlint --config .markdownlint.js --fix .",
     "pre-check": "tsc && npx lint-staged",
     "commit": "git pull && git add -A && git-cz && git push",
-    "release": "standard-version"
+    "release": "standard-version",
+    "release:alpha": "standard-version --prerelease alpha",
+    "release:rc": "standard-version --prerelease rc",
+    "release:major": "pnpm run release -- --release-as major",
+    "release:minor": "pnpm run release -- --release-as minor",
+    "release:patch": "pnpm run release -- --release-as patch"
   },
   "keywords": [],
   "author": "",
