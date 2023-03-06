@@ -15,8 +15,9 @@
     "build:analy": "cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.analy.ts",
     "build:dll": "ts-node ./build/webpack.dll.ts",
     "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,scss,stylus,html,md}\"",
-    "lint:eslint": "eslint --fix --ext .js,.ts,.tsx ./src",
-    "lint:md": "npx markdownlint --config .markdownlint.js --fix ."
+    "lint:eslint": "eslint --fix --ext .js,.ts,.tsx ./src --max-warnings=0",
+    "lint:md": "npx markdownlint --config .markdownlint.js --fix .",
+    "pre-check": "tsc && npx lint-staged"
   },
   "keywords": [],
   "author": "",
@@ -90,5 +91,10 @@
     "webpack-dev-server": "^4.11.1",
     "webpack-merge": "^5.8.0",
     "webpackbar": "^5.0.2"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "pnpm run lint:eslint"
+    ]
   }
 }

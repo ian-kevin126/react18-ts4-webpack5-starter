@@ -7,7 +7,8 @@
     "strict": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "allowJs": true, // 允许编辑js文件
+    "allowJs": false, // 允许编辑js文件
+    "noEmit": true, // 不生成输出文件
     "noImplicitAny": false,
     "experimentalDecorators": true,
     "baseUrl": ".",

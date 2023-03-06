@@ -12,3 +12,9 @@ const root = document.querySelector('#root')
 if (root) {
   createRoot(root).render(<App />)
 }
+
+function hello(name: string) {
+  return `hello ${name}`
+}
+
+hello(1212)
