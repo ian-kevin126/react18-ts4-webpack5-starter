@@ -1,0 +1,34 @@
+@color: red;
+
+@font-face {
+  font-family: 'GoldmanBold';
+  src: local('GoldmanBold'), url('@/assets/fonts/Phudu-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+.lessBox {
+  .box {
+    color: @color;
+    background-color: lightblue;
+    font-family: 'GoldmanBold';
+    border-radius: 25px;
+
+    &:before {
+      @arr: 'hello', 'world';
+      content: ` @{arr}.join(' ') .toUpperCase() `;
+    }
+  }
+
+  .smallImg {
+    width: 69px;
+    height: 75px;
+    background: url('@/assets/imgs/5kb_img.jpeg') no-repeat;
+    transform: translate(100px, -100px);
+  }
+
+  .bigImg {
+    width: 232px;
+    height: 154px;
+    background: url('@/assets/imgs/10kb_img.png') no-repeat;
+  }
+}

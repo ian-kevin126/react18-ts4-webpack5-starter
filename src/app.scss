@@ -1,0 +1,22 @@
+$blue: #1875e7;
+$side: left;
+
+@font-face {
+  font-family: 'Mynerve';
+  src: url('@/assets/fonts/Mynerve-Regular.ttf') format('ttf');
+  font-weight: 800;
+  font-style: normal;
+}
+
+.scssBox {
+  margin: 20px 0;
+  font-family: 'Mynerve';
+
+  .box {
+    color: $blue;
+    background-color: rgb(226, 223, 223);
+    border: 1px solid grey;
+    margin-#{$side}: 20px;
+    padding: calc(20px / 2);
+  }
+}
