@@ -8,7 +8,3 @@
 - UI 框架：Antd5.x（Antd按需加载、主题等）、Arco design
 - 图片、fonts、数据资源(JSON、csv、tsv等)
 - 热更新、资源压缩、代码分离（动态导入、懒加载等）、缓存
-
->PS：不同的技术栈，会通过不同分支进行区分
-
-[Starter template for Vite with React (TypeScript). Supports Tailwind with CSS-Modules. Jest and @react/testing-library configured and ready to go. Also ESLint, Prettier, Husky, Commit-lint and Atomic Design for components.](https://github.com/jvidalv/vital)
