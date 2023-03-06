@@ -17,7 +17,9 @@
     "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,scss,stylus,html,md}\"",
     "lint:eslint": "eslint --fix --ext .js,.ts,.tsx ./src --max-warnings=0",
     "lint:md": "npx markdownlint --config .markdownlint.js --fix .",
-    "pre-check": "tsc && npx lint-staged"
+    "pre-check": "tsc && npx lint-staged",
+    "commit": "git pull && git add -A && git-cz && git push",
+    "release": "standard-version"
   },
   "keywords": [],
   "author": "",
@@ -78,6 +80,7 @@
     "sass": "^1.58.3",
     "sass-loader": "^13.2.0",
     "speed-measure-webpack-plugin": "^1.5.0",
+    "standard-version": "^9.5.0",
     "style-loader": "^3.3.1",
     "stylelint": "^15.2.0",
     "stylelint-config-css-modules": "^4.1.0",
