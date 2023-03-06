@@ -95,7 +95,8 @@
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
-      "pnpm run lint:eslint"
+      "pnpm run lint:eslint",
+      "pnpm run lint:prettier"
     ]
   }
 }
