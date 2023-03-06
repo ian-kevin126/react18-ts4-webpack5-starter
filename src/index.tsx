@@ -13,8 +13,8 @@ if (root) {
   createRoot(root).render(<App />)
 }
 
-function hello(name: string) {
-  return `hello ${name}`
-}
+// function hello(name: string) {
+//   return `hello ${name}`
+// }
 
-hello(1212)
+// hello(1212)

@@ -36,6 +36,7 @@ specifiers:
   eslint-plugin-react-hooks: ^4.6.0
   glob-all: ^3.3.1
   html-webpack-plugin: ^5.5.0
+  husky: ^8.0.3
   less: ^4.1.3
   less-loader: ^11.1.0
   markdownlint-cli: ^0.33.0
@@ -108,6 +109,7 @@ devDependencies:
   eslint-plugin-react-hooks: 4.6.0_eslint@8.35.0
   glob-all: 3.3.1
   html-webpack-plugin: 5.5.0_webpack@5.75.0
+  husky: 8.0.3
   less: 4.1.3
   less-loader: 11.1.0_less@4.1.3+webpack@5.75.0
   markdownlint-cli: 0.33.0
@@ -4473,6 +4475,12 @@ packages:
   /human-signals/2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
+    dev: true
+
+  /husky/8.0.3:
+    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /iconv-lite/0.4.24:
