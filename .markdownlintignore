@@ -1,0 +1,10 @@
+node_modules
+dist
+env
+.gitignore
+pnpm-lock.yaml
+src/assets/*
+.vscode
+public
+.github
+.husky

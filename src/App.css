@@ -1,3 +1,10 @@
 h2 {
-    color: red;
+  color: red;
+}
+
+.east-white {
+  display: block;
+  width: 111px;
+  height: 111px;
+  background-color: red;
 }

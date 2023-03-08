@@ -1,0 +1,14 @@
+# https://editorconfig.org
+root = true # 设置为true表示根目录，控制配置文件 .editorconfig 是否生效的字段
+
+[*] # 匹配全部文件，匹配除了 `/` 路径分隔符之外的任意字符串
+charset = utf-8                  # 设置字符编码，取值为 latin1，utf-8，utf-8-bom，utf-16be 和 utf-16le，当然 utf-8-bom 不推荐使用
+end_of_line = lf                 # 设置使用的换行符，取值为 lf，cr 或者 crlf
+indent_size = 2                  # 设置缩进的大小，即缩进的列数，当 indexstyle 取值 tab 时，indentsize 会使用 tab_width 的值
+indent_style = space             # 缩进风格，可选space｜tab
+insert_final_newline = true      # 设为true表示使文件以一个空白行结尾
+trim_trailing_whitespace = true  # 删除一行中的前后空格
+
+[*.md] # 匹配全部 .md 文件
+trim_trailing_whitespace = false
+
