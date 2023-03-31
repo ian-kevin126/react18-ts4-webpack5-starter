@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "pnpm run tailwind:css && cross-env NODE_ENV=development BASE_ENV=development webpack serve -c build/webpack.dev.ts",
     "dev:dev": "cross-env NODE_ENV=development BASE_ENV=development webpack serve -c build/webpack.dev.ts",
     "dev:test": "cross-env NODE_ENV=development BASE_ENV=test webpack serve -c build/webpack.dev.ts",
     "dev:pre": "cross-env NODE_ENV=development BASE_ENV=pre webpack serve -c build/webpack.dev.ts",
@@ -14,6 +15,7 @@
     "build:prod": "cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.prod.ts",
     "build:analy": "cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.analy.ts",
     "build:dll": "ts-node ./build/webpack.dll.ts",
+    "tailwind:css": "tailwind build src/tailwind.css -c tailwind.config.js -o src/index.css",
     "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,scss,stylus,html,md}\"",
     "lint:eslint": "eslint --fix --ext .js,.ts,.tsx ./src --max-warnings=0",
     "lint:md": "npx markdownlint --config .markdownlint.js --fix .",
@@ -31,8 +33,14 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
+    "postcss": "^8.4.4",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-loader": "^6.2.1",
+    "postcss-normalize": "^10.0.1",
+    "postcss-preset-env": "^7.0.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
@@ -48,7 +56,7 @@
     "@types/react-dom": "^18.0.10",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.54.0",
-    "autoprefixer": "^10.4.13",
+    "autoprefixer": "^9.8.6",
     "babel-loader": "^9.1.2",
     "clean-webpack-plugin": "^4.0.0",
     "commitizen": "^4.3.0",
@@ -78,7 +86,6 @@
     "less-loader": "^11.1.0",
     "markdownlint-cli": "^0.33.0",
     "mini-css-extract-plugin": "^2.7.2",
-    "postcss-loader": "^7.0.2",
     "prettier": "^2.8.4",
     "purgecss-webpack-plugin": "^5.0.0",
     "react-refresh": "^0.14.0",

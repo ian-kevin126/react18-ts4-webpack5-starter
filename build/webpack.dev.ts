@@ -1,7 +1,8 @@
 import path from 'path'
 import webpack, { Configuration as WebpackConfiguration } from 'webpack'
-import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
-import WebpackDevServer from 'webpack-dev-server'
+import WebpackDevServer, {
+  Configuration as WebpackDevServerConfiguration
+} from 'webpack-dev-server'
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import { merge } from 'webpack-merge'
 import baseConfig from './webpack.base'

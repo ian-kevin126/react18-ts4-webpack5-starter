@@ -27,6 +27,7 @@ module.exports = {
     'class-methods-use-this': 'off',
     'no-param-reassign': 'off',
     'no-unused-expressions': 'off',
+    'global-require': 'off',
     'no-plusplus': 0,
     'no-restricted-syntax': 0,
     'consistent-return': 0,

@@ -12,7 +12,7 @@ console.log('BASE_ENV', process.env.BASE_ENV)
 
 // 加载配置文件
 const envConfig = dotenv.config({
-  path: path.resolve(__dirname, '../env/.env.' + process.env.BASE_ENV)
+  path: path.resolve(__dirname, `../env/.env.${process.env.BASE_ENV}`)
 })
 
 const tsxRegex = /\.(ts|tsx)$/
@@ -25,18 +25,23 @@ const fontRegex = /\.(ttf|woff2?|eot|otf)$/
 const mediaRegex = /\.(mp4|webm|ogg|mp3|wav|flac|aac)$/
 const jsonRegex = /\.json$/
 
-const styleLoadersArray = [
-  isDev ? 'style-loader' : MiniCssExtractPlugin.loader, // 开发环境使用style-looader,打包模式抽离css
-  {
-    loader: 'css-loader',
-    options: {
-      modules: {
-        localIdentName: '[path][name]__[local]--[hash:5]'
-      }
-    }
-  },
-  'postcss-loader'
-]
+const getStyleLoaders = (cssLoaderOpts: any) => {
+  const loaders = [
+    isDev ? 'style-loader' : MiniCssExtractPlugin.loader, // 开发环境使用style-looader,打包模式抽离css
+    {
+      /** 三个作用：
+       * 1. CSS 模块化：将 CSS 模块化可以避免命名冲突，提高代码复用性。
+       * 2. 自动添加浏览器前缀：在 CSS 样式中自动添加浏览器前缀，以提高浏览器兼容性。
+       * 3. 将 CSS 中的 URL 转换成 require：将 CSS 中的图片路径转换成 Webpack 所需的 require 路径。
+       */
+      loader: 'css-loader',
+      options: cssLoaderOpts
+    },
+    'postcss-loader'
+  ]
+
+  return loaders
+}
 
 const baseConfig: Configuration = {
   entry: path.join(__dirname, '../src/index.tsx'), // 入口文件
@@ -58,13 +63,27 @@ const baseConfig: Configuration = {
         // use: ['thread-loader', 'babel-loader'] // 项目变大之后再开启多进程loader
       },
       {
-        test: cssRegex, //匹配 css 文件
-        use: styleLoadersArray
+        test: cssRegex, // 匹配 css 文件
+        use: getStyleLoaders({
+          // importLoaders: 1, // 指定在 CSS 中 @import 的文件也要被 css-loader 处理，默认为 0。
+          // 启用 CSS 模块化，默认为 false。
+          modules: {
+            mode: 'icss',
+            localIdentName: '[path][name]__[local]--[hash:5]'
+          }
+        })
       },
       {
         test: lessRegex,
         use: [
-          ...styleLoadersArray,
+          ...getStyleLoaders({
+            importLoaders: 2, // 指定在 CSS 中 @import 的文件也要被 css-loader 处理，默认为 0。
+            // 启用 CSS 模块化，默认为 false。
+            modules: {
+              mode: 'local',
+              localIdentName: '[path][name]__[local]--[hash:5]'
+            }
+          }),
           {
             loader: 'less-loader',
             options: {
@@ -82,7 +101,14 @@ const baseConfig: Configuration = {
       {
         test: sassRegex,
         use: [
-          ...styleLoadersArray,
+          ...getStyleLoaders({
+            importLoaders: 2, // 指定在 CSS 中 @import 的文件也要被 css-loader 处理，默认为 0。
+            // 启用 CSS 模块化，默认为 false。
+            modules: {
+              mode: 'local',
+              localIdentName: '[path][name]__[local]--[hash:5]'
+            }
+          }),
           {
             loader: 'sass-loader',
             options: {
@@ -93,7 +119,17 @@ const baseConfig: Configuration = {
       },
       {
         test: stylRegex,
-        use: [...styleLoadersArray, 'stylus-loader']
+        use: [
+          ...getStyleLoaders({
+            importLoaders: 2, // 指定在 CSS 中 @import 的文件也要被 css-loader 处理，默认为 0。
+            // 启用 CSS 模块化，默认为 false。
+            modules: {
+              mode: 'local',
+              localIdentName: '[path][name]__[local]--[hash:5]'
+            }
+          }),
+          'stylus-loader'
+        ]
       },
       {
         test: imageRegex, // 匹配图片文件
@@ -165,7 +201,7 @@ const baseConfig: Configuration = {
       // 压缩html资源
       minify: {
         removeAttributeQuotes: true,
-        collapseWhitespace: true, //去空格
+        collapseWhitespace: true, // 去空格
         removeComments: true, // 去注释
         minifyJS: true, // 在脚本元素和事件属性中缩小JavaScript(使用UglifyJS)
         minifyCSS: true // 缩小CSS样式元素和样式属性

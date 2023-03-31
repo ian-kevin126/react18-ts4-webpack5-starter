@@ -70,6 +70,13 @@ function App() {
       <div className={stylStyles.stylBox}>
         <div className={stylStyles.box}>stylBox</div>
       </div>
+      <div style={{ margin: 30, padding: 20 }}>
+        <h1 className='text-3xl font-bold underline text-blue-600 my-8'>Hello world!</h1>
+        <div className='bg-cyan-500 shadow-lg shadow-cyan-500/50 my-8'>hello wolrd</div>
+        <button className='shadow shadow-blue-500/40 hover:shadow-indigo-800/40 p-10'>
+          hover效果
+        </button>
+      </div>
       <ClassComp />
       <div>
         <p>受控组件</p>

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2016", // 指定ECMAScript目标版本
+    "lib": ["dom", "dom.iterable", "esnext"],
     "esModuleInterop": true,
     "module": "commonjs",
     "forceConsistentCasingInFileNames": true,
