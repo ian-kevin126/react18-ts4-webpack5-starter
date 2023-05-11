@@ -12,7 +12,7 @@ console.log('BASE_ENV', process.env.BASE_ENV)
 
 // 加载配置文件
 const envConfig = dotenv.config({
-  path: path.resolve(__dirname, '../env/.env.' + process.env.BASE_ENV)
+  path: path.resolve(__dirname, `../env/.env.${process.env.BASE_ENV}`)
 })
 
 const tsxRegex = /\.(ts|tsx)$/
@@ -58,7 +58,7 @@ const baseConfig: Configuration = {
         // use: ['thread-loader', 'babel-loader'] // 项目变大之后再开启多进程loader
       },
       {
-        test: cssRegex, //匹配 css 文件
+        test: cssRegex, // 匹配 css 文件
         use: styleLoadersArray
       },
       {
@@ -165,7 +165,7 @@ const baseConfig: Configuration = {
       // 压缩html资源
       minify: {
         removeAttributeQuotes: true,
-        collapseWhitespace: true, //去空格
+        collapseWhitespace: true, // 去空格
         removeComments: true, // 去注释
         minifyJS: true, // 在脚本元素和事件属性中缩小JavaScript(使用UglifyJS)
         minifyCSS: true // 缩小CSS样式元素和样式属性
