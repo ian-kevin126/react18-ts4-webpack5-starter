@@ -8,3 +8,10 @@
 - UI 框架：Antd5.x（Antd按需加载、主题等）、Arco design
 - 图片、fonts、数据资源(JSON、csv、tsv等)
 - 热更新、资源压缩、代码分离（动态导入、懒加载等）、缓存
+
+***
+
+前端：[react18-ts4-webpack5-starter](https://github.com/ian-kevin126/react18-ts4-webpack5-starter)
+后端：[gin_common_web_server](https://github.com/ian-kevin126/gin_common_web_server)
+
+***
