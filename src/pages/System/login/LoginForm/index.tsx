@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Form, Input, Button, Image } from 'antd'
 import { UserOutlined, LockOutlined, CloseCircleOutlined } from '@ant-design/icons'
 import { Login } from '@/types/base'
@@ -28,15 +28,18 @@ const LoginForm: React.FC = () => {
     }
   }
 
+  useEffect(() => {
+    if (_captcha && _captcha?.data) {
+      setCaptcha(_captcha.data)
+    }
+  }, [_captcha])
+
   const handleOnFinishFailed = () => {
     // TODO:
   }
 
-  const HandleGetCaptchaCode = () => {
-    getCaptcha(undefined)
-    if (_captcha && _captcha?.data) {
-      setCaptcha(_captcha.data)
-    }
+  const HandleGetCaptchaCode = async () => {
+    await getCaptcha(undefined)
   }
 
   return (
