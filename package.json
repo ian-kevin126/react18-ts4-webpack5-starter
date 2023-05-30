@@ -39,7 +39,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.11.1"
+    "react-router-dom": "^6.11.1",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
@@ -53,7 +54,9 @@
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
+    "@types/react-redux": "^7.1.25",
     "@types/react-router-dom": "^5.3.3",
+    "@types/redux-persist": "^4.3.1",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.54.0",
     "autoprefixer": "^10.4.13",
