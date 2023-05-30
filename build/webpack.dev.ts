@@ -46,7 +46,15 @@ const devServer = new WebpackDevServer(
     static: {
       directory: path.join(__dirname, '../public') // 托管静态资源public文件夹
     },
-    headers: { 'Access-Control-Allow-Origin': '*' }
+    headers: { 'Access-Control-Allow-Origin': '*' },
+    proxy: {
+      '/api': {
+        // 代理到mock地址
+        // "https://www.fastmock.site/mock/4eb2636393ba3df8ef918a305d730d65",
+        target: 'http://localhost:8889',
+        changeOrigin: true
+      }
+    }
   },
   webpack(devConfig)
 )

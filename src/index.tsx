@@ -1,5 +1,6 @@
 import { createRoot } from 'react-dom/client'
 import App from './App'
+import 'antd/dist/reset.css'
 import 'normalize.css/normalize.css'
 
 const root = document.querySelector('#root')

@@ -1,6 +1,6 @@
 import { useRoutes, Navigate } from 'react-router-dom'
 import { RouteObject } from './types'
-import Login from '@/pages/System/login'
+import Login from '@/pages/System/Login'
 
 export const rootRooter: RouteObject[] = [
   {
