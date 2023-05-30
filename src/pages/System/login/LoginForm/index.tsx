@@ -1,17 +1,31 @@
 import { useState } from 'react'
 import { Form, Input, Button, Image } from 'antd'
 import { UserOutlined, LockOutlined, CloseCircleOutlined } from '@ant-design/icons'
-import { Captcha } from '@/types/Layout'
+import { Login } from '@/types/base'
+import { useGetCaptchaMutation, useLoginMutation } from '@/api/base'
 import styles from './index.scss'
 
 const LoginForm: React.FC = () => {
-  const [captcha, setCaptcha] = useState<Captcha>()
+  const [captcha, setCaptcha] = useState<Login.Captcha>()
   const [loading, setLoading] = useState(false)
 
   const [form] = Form.useForm()
 
-  const handleOnFinish = () => {
-    // TODO:
+  const [getCaptcha, { data: _captcha }] = useGetCaptchaMutation()
+  const [login] = useLoginMutation()
+
+  const handleOnFinish = async (loginForm: Login.ReqLoginForm) => {
+    try {
+      setLoading(true)
+      const loginParams: Login.ReqLoginForm = {
+        ...loginForm,
+        captchaId: captcha?.captchaId ?? ''
+      }
+
+      await login(loginParams)
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleOnFinishFailed = () => {
@@ -19,9 +33,10 @@ const LoginForm: React.FC = () => {
   }
 
   const HandleGetCaptchaCode = () => {
-    // TODO:
-    setCaptcha({})
-    setLoading(false)
+    getCaptcha(undefined)
+    if (_captcha && _captcha?.data) {
+      setCaptcha(_captcha.data)
+    }
   }
 
   return (

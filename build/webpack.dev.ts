@@ -48,11 +48,10 @@ const devServer = new WebpackDevServer(
     },
     headers: { 'Access-Control-Allow-Origin': '*' },
     proxy: {
-      '/api': {
-        // 代理到mock地址
-        // "https://www.fastmock.site/mock/4eb2636393ba3df8ef918a305d730d65",
+      '/base': {
         target: 'http://localhost:8889',
-        changeOrigin: true
+        changeOrigin: true,
+        pathRewrite: { '^/base': '/base' }
       }
     }
   },

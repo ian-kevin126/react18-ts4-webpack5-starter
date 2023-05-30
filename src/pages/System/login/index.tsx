@@ -1,7 +1,6 @@
 import loginLeft from '@/assets/imgs/login_left.png'
-import loginLogo from '@/assets/imgs/logo.png'
-import styles from './index.scss'
 import LoginForm from './LoginForm'
+import styles from './index.scss'
 
 const Login: React.FC = () => {
   return (
@@ -12,7 +11,6 @@ const Login: React.FC = () => {
         </div>
         <div className={styles['login-right']}>
           <div className={styles['login-logo']}>
-            <img src={loginLogo} className={styles['login-icon']} alt='loginLogo' />
             <span className={styles['login-text']}>East_White_Admin</span>
           </div>
           <LoginForm />
