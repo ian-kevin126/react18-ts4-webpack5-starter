@@ -1,18 +1,38 @@
-# 1.React18+webpack5+ts4.x脚手架
+# React 18 + Webpack 5 + TypeScript 4.x Scaffold
 
->由于想搭建一个适合更多人使用的大而全的完整项目，也想搞清楚其中每个关键环节和依赖的作用，且会随着时间不断迭代，加入新东西，为了避免产出一篇过长的文章，作长远考虑，将会分为多篇文章~
+In order to build a comprehensive project suitable for a wider audience and to understand the role of each key component and dependency, which will continue to evolve over time and incorporate new features, we are dividing the information into multiple articles to avoid creating overly long content.
 
-- 技术栈：webpack5 + React18 + TS4.x
-- 工程化：eslint + prettier + stylelint + husky + commitlint
-- 样式与处理器：CSS module（less、sass、stylus）、Atom CSS（tailwind）
-- UI 框架：Antd5.x（Antd按需加载、主题等）、Arco design
-- 图片、fonts、数据资源(JSON、csv、tsv等)
-- 热更新、资源压缩、代码分离（动态导入、懒加载等）、缓存
+## Technology Stack
+- Webpack 5
+- React 18
+- TypeScript 4.x
 
-***
+## Engineering
+- ESLint
+- Prettier
+- Stylelint
+- Husky
+- Commitlint
 
-前端：[react18-ts4-webpack5-starter](https://github.com/ian-kevin126/react18-ts4-webpack5-starter)
+## Styles and Processors
+- CSS modules (less, sass, stylus)
+- Atomic CSS (Tailwind)
 
-后端：[gin_common_web_server](https://github.com/ian-kevin126/gin_common_web_server)
+## UI Framework
+- Ant Design 5.x (Ant Design on-demand loading, themes, etc.)
+- Arco Design
 
-***
+## Resources
+- Images
+- Fonts
+- Data resources (JSON, CSV, TSV, etc.)
+
+## Features
+- Hot reloading
+- Resource compression
+- Code splitting (dynamic imports, lazy loading, etc.)
+- Caching
+
+## Projects
+- Frontend: React 18 TypeScript 4 Webpack 5 Starter
+- Backend: gin_common_web_server
